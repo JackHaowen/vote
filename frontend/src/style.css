@@ -1,0 +1,14 @@
+:root { color: #172033; background: #f4f7fb; font-family: Inter, "Microsoft YaHei", system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.shell { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.card { width: min(100%, 680px); background: #fff; border: 1px solid #dbe3ef; border-radius: 18px; padding: clamp(24px, 5vw, 44px); box-shadow: 0 12px 32px rgb(22 36 65 / 8%); }
+h1 { margin: 4px 0 8px; font-size: clamp(26px, 5vw, 38px); line-height: 1.2; } h2 { font-size: 20px; margin: 28px 0 16px; }
+.eyebrow { margin: 0; color: #3455c5; font-size: 14px; font-weight: 700; letter-spacing: .08em; } .muted { color: #61708a; }
+form { display: grid; gap: 16px; margin-top: 26px; } label { display: grid; gap: 7px; font-weight: 650; }
+input[type="text"], input:not([type]) { width: 100%; } input:not([type]), input[type="text"] { border: 1px solid #aebbd0; border-radius: 8px; padding: 12px; font: inherit; }
+input:focus-visible, button:focus-visible { outline: 3px solid #9bb8ff; outline-offset: 2px; }
+button { width: fit-content; border: 0; border-radius: 8px; padding: 12px 18px; background: #2449bc; color: white; font: inherit; font-weight: 700; cursor: pointer; } button:disabled { cursor: wait; opacity: .6; }
+fieldset { display: grid; gap: 10px; border: 0; margin: 0; padding: 0; }.option { display: flex; align-items: center; gap: 10px; border: 1px solid #cbd6e6; border-radius: 9px; padding: 14px; cursor: pointer; }.option:has(input:checked) { border-color: #2449bc; background: #f1f5ff; }.option input { accent-color: #2449bc; }
+.results { margin-top: 28px; border-top: 1px solid #e1e7f0; }.result-row { margin: 16px 0; }.result-row > div:first-child { display: flex; justify-content: space-between; gap: 12px; }.track { height: 10px; overflow: hidden; margin-top: 8px; background: #e5eaf2; border-radius: 99px; }.track span { display: block; height: 100%; background: #2449bc; border-radius: inherit; transition: width .2s ease; }.error { color: #b42318; }.success { color: #087443; font-weight: 650; }.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+@media (max-width: 480px) { .shell { padding: 12px; }.card { border-radius: 12px; }.result-row > div:first-child { display: grid; gap: 4px; } }

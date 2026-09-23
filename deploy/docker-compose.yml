@@ -1,0 +1,31 @@
+services:
+  database:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: vote
+      POSTGRES_USER: vote
+      POSTGRES_PASSWORD: vote
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vote -d vote"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes: ["postgres-data:/var/lib/postgresql"]
+  backend:
+    build:
+      context: ../backend
+    environment:
+      DATABASE_URL: jdbc:postgresql://database:5432/vote
+      DATABASE_USERNAME: vote
+      DATABASE_PASSWORD: vote
+      VISITOR_HMAC_SECRET: replace-with-a-stable-production-secret
+    depends_on:
+      database: { condition: service_healthy }
+  frontend:
+    build:
+      context: ..
+      dockerfile: frontend/Dockerfile
+    ports: ["8088:80"]
+    depends_on: [backend]
+volumes:
+  postgres-data:
